@@ -139,18 +139,21 @@ if __name__ == "__main__":
     if len(startup_arg_files) == 1:
         print("📃 object 1 path: {0}".format(startup_arg_files[0]))
         Target1 = startup_arg_files[0]
-        Target2 = input("⌨️ Please input the (absolute) path of compare object2: ")
+        Target2 = input("⌨️ Please input the (absolute) path of compare object2 (press enter to skip): ")
     else:
         Target1 = input("⌨️ Please input the (absolute) path of compare object1: ")
-        Target2 = input("⌨️ Please input the (absolute) path of compare object2: ")
+        Target2 = input("⌨️ Please input the (absolute) path of compare object2 (press enter to skip): ")
     try:
-        print_headline("Processing target 1")
-        MD5_1 = general_md5(Target1)
-        print_headline("Processing target 2")
-        MD5_2 = general_md5(Target2)
-        print("-" * os.get_terminal_size().columns)
-        if MD5_1 == MD5_2:
-            print(r"""
+        if Target2 == "":
+            general_md5(Target1)
+        else:
+            print_headline("Processing target 1")
+            MD5_1 = general_md5(Target1)
+            print_headline("Processing target 2")
+            MD5_2 = general_md5(Target2)
+            print("-" * os.get_terminal_size().columns)
+            if MD5_1 == MD5_2:
+                print(r"""
   _____ __ __    __    __    ___  _____ _____ __ 
  / ___/|  |  |  /  ]  /  ]  /  _]/ ___// ___/|  |
 (   \_ |  |  | /  /  /  /  /  [_(   \_(   \_ |  |
@@ -160,8 +163,8 @@ if __name__ == "__main__":
   \___| \__,_|\____|\____||_____| \___| \___||__|
                                                  
 """)
-        else:
-            print(r"""
+            else:
+                print(r"""
    ___  ____   ____   ___   ____   __ 
   /  _]|    \ |    \ /   \ |    \ |  |
  /  [_ |  D  )|  D  )     ||  D  )|  |
