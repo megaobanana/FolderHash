@@ -139,10 +139,10 @@ if __name__ == "__main__":
     if len(startup_arg_files) == 1:
         print("📃 object 1 path: {0}".format(startup_arg_files[0]))
         Target1 = startup_arg_files[0]
-        Target2 = input("⌨️ Please input the (absolute) path of compare object2 (press enter to skip): ")
+        Target2 = input("⌨️ Please input the (absolute) path of compare object2 (press enter to skip): ").strip(' "\'\t\n\r')
     else:
-        Target1 = input("⌨️ Please input the (absolute) path of compare object1: ")
-        Target2 = input("⌨️ Please input the (absolute) path of compare object2 (press enter to skip): ")
+        Target1 = input("⌨️ Please input the (absolute) path of compare object1: ").strip(' "\'\t\n\r')
+        Target2 = input("⌨️ Please input the (absolute) path of compare object2 (press enter to skip): ").strip(' "\'\t\n\r')
     try:
         if Target2 == "":
             general_md5(Target1)

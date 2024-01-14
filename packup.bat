@@ -1,0 +1,1 @@
+pyinstaller -F md5.py --icon="./icon.ico"
